@@ -21,3 +21,45 @@ The day of writing this, the example response was:
 
 Hopefully this is useful to some 👍
 
+
+## Example deployment using Linux Alpine (3.11 at the time of writing) LXC container from recent installed to deployed python service
+
+These commands are all written assuming root permission.
+
+### Instal Python and pip
+
+`apk add --no-cache python3 py3-pip`
+
+### Instal git
+
+`apk add --no-cache git`
+
+### Clone this repository
+
+`git clone https://github.com/KenanHArik/word_of_the_day_endpoint.git`
+
+### Update and upgrade all packages
+
+`apk update && apk upgrade`
+
+### Install necessary Python packages using pip
+
+`pip3 install -r ./word_of_the_day_endpoint/requirements.txt`
+
+### Copy the wotd service file over to /etc/init.d, and update permissions
+
+`cp /root/word_of_the_day_endpoint/wotd /etc/init.d`
+`chmod +x /etc/init.d/wotd`
+
+### Start the service, and allow it to start at boot time
+
+`/etc/init.d/wotd start`
+`rc-update add wotd boot`
+
+If all went well, you should be able to reach the endpoint at the machine's IP address, at address xxx.xxx.xxx.xxx/word_of_the_day
+
+similarly, with FastAPI - you should also see docs present at xxx.xxx.xxx.xxx/docs.
+
+### If you ever need to check to make sure the service is running, you can do so with
+
+`rc-status -a`
