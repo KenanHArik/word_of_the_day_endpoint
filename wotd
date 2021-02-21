@@ -4,5 +4,6 @@ depend() {
     need net
 }
 
-command="/usr/bin/python3 /root/word_of_the_day_endpoint/app.py > /root/run.log &"
-pidfile="/run/${RC_SVCNAME}/pid"
+command="/usr/bin/python3"
+command_args="/root/word_of_the_day_endpoint/app.py > /root/word_of_the_day_endpoint/run.log &"
+pidfile="/run/wotd.pid" 
