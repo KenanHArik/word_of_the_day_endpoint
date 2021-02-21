@@ -1,0 +1,8 @@
+#!/sbin/openrc-run
+
+depend() {
+    need net
+}
+
+command="/root/word_of_the_day_endpoint/python app.py"
+pidfile="/run/${RC_SVCNAME}/pid"
