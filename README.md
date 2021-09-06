@@ -22,33 +22,44 @@ The day of writing this, the example response was:
 Hopefully this is useful to some 👍
 
 
-## Example deployment using Linux Alpine (3.11 at the time of writing) LXC container from recent installed to deployed python service
+## Example deployment using Linux Alpine (3.13 at the time of writing) LXC container from recent installed to deployed python service
 
-These commands are all written assuming root permission.
+These commands are all written assuming root permission. Make sure you already have the latest updates before starting with `apk update && apk upgrade`
 
 ### Instal Python and pip
 
-`apk add --no-cache python3 py3-pip`
+```
+apk add --no-cache python3 py3-pip
+```
 
 ### Instal git
 
-`apk add --no-cache git`
+```
+apk add --no-cache git
+```
 
 ### Clone this repository
 
-`git clone https://github.com/KenanHArik/word_of_the_day_endpoint.git`
+```
+git clone https://github.com/KenanHArik/word_of_the_day_endpoint.git
+```
 
 ### Update and upgrade all packages
 
-`apk update && apk upgrade`
+```
+apk update && apk upgrade
+```
 
 ### Install necessary Python packages using pip
 
-`pip3 install -r ./word_of_the_day_endpoint/requirements.txt`
+```
+pip3 install -r ./word_of_the_day_endpoint/requirements.txt
+```
 
 ### Copy the wotd service file over to /etc/init.d, and update permissions
 
-```cp /root/word_of_the_day_endpoint/wotd /etc/init.d
+```
+cp /root/word_of_the_day_endpoint/wotd /etc/init.d
 chmod +x /etc/init.d/wotd
 ```
 
@@ -65,4 +76,6 @@ similarly, with FastAPI - you should also see docs present at xxx.xxx.xxx.xxx/do
 
 ### If you ever need to check to make sure the service is running, you can do so with
 
-`rc-status -a`
+```
+rc-status -a
+```
