@@ -48,13 +48,16 @@ These commands are all written assuming root permission.
 
 ### Copy the wotd service file over to /etc/init.d, and update permissions
 
-'''cp /root/word_of_the_day_endpoint/wotd /etc/init.d
-chmod +x /etc/init.d/wotd'''
+```cp /root/word_of_the_day_endpoint/wotd /etc/init.d
+chmod +x /etc/init.d/wotd
+```
 
 ### Start the service, and allow it to start at boot time
 
-'''/etc/init.d/wotd start
-rc-update add wotd boot'''
+```
+/etc/init.d/wotd start
+rc-update add wotd boot
+```
 
 If all went well, you should be able to reach the endpoint at the machine's IP address, at address xxx.xxx.xxx.xxx/word_of_the_day
 
